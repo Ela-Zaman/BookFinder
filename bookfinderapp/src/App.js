@@ -6,14 +6,17 @@ const App =()=>{
     const [searchTerm,setSearchTerm] =useState("");
     const[bookss,setBooks] =useState([]);
 
-    const handleSubmit =() => {}
+    const handleSubmit = async(event) => {
+        event.preventDefault();
+        await getBooksByTerm(searchTerm,setBooks);
+    }
     const handleChange =(event) =>{
         console.log(event.target.value);
         setSearchTerm(event.target.value);
     }
     return (<div>
         <Navbar></Navbar>
-        <Searchbar handleChange ={handleChange}></Searchbar>
+        <Searchbar handleChange ={handleChange} handleSubmit ={handleSubmit}></Searchbar>
     </div>)
   }
 

@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const GBAPI= axios.create({
-    baseURl:"https://www.googleapis.com/books/"
+    baseURL:"https://www.googleapis.com/books/v1"
 })
 
 const getBooksByTerm = (SearchTerm,setBooks)=>
 {
-    GBAPI.get("/v1/volumes",{
+    GBAPI.get("/volumes",{
         params:{
             projection: "lite",
             q: SearchTerm,
@@ -17,7 +17,7 @@ const getBooksByTerm = (SearchTerm,setBooks)=>
     },
     ).then((response)=>
     {
-        console.log(response);
+        console.log(response.data.items);
         setBooks(response.data);
     })
     
