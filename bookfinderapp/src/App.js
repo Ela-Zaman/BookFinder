@@ -1,5 +1,6 @@
 import React,{useState} from "react"
-import Navbar from "./components/Navbar"
+import {Link} from 'react-router-dom'
+
 import Searchbar from "./components/Searchbar"
 import {getBooksByTerm} from "./api/GBApi"
 import BookList from "./components/BookList"
@@ -29,7 +30,7 @@ const App =()=>{
         await getBooksByTerm(searchTerm,setBooks,currentPage,setTotalPages)
     }
     return (<div>
-        <Navbar></Navbar>
+      
         <Searchbar handleChange ={handleChange} handleSubmit ={handleSubmit}></Searchbar>
         <BookList books={books}/>
         {totalPages>1?(
