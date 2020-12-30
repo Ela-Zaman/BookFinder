@@ -1,19 +1,23 @@
 import React from "react"
+import {Link} from 'react-router-dom'
+import { getBookDetails } from "../api/GBApi";
 
 const Book =(props)=>
 {
     
+
    
     const bookInfo=props.data.volumeInfo
     const ImageURL =bookInfo.imageLinks.thumbnail;
+   
     
     return (
        
     
-    <div class="col s12 m4" >
-      <div class="card" >
-        <div class="card-image">
-            {ImageURL == null || ImageURL ==undefined?(
+    <div className="col s12 m4" >
+      <div className="card" >
+        <div className="card-image">
+            {ImageURL == null ?(
                 <img 
                     src ="https://picsum.photos/200/300"
                     alt=""
@@ -31,7 +35,13 @@ const Book =(props)=>
      
         </div>
         <div className="card-action">
-          <a href="#">This is a link</a>
+          <Link to ={{
+              pathname:"/book/"+props.data.id,
+              volume_id:props.data.id,
+              bookInfo: bookInfo
+            
+          }}>See Details
+          </Link>
         </div>
       </div>
     </div>
